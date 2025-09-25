@@ -1,4 +1,4 @@
-🎤 Gemini Voice Chatbot (React.js)
+🎤 Gemini Voice Chatbot 
 
 This project is a React-based voice chatbot powered by Google Gemini API.
 It allows users to ask questions via voice or text, edit before sending, and get AI-generated responses with optional text-to-speech playback.
