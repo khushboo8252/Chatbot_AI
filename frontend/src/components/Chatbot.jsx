@@ -114,10 +114,31 @@ const ChatBot = () => {
         setMessages((prev) => [...prev, botMessage]);
         setIsTyping(false);
 
-        // Speak response
-        if ("speechSynthesis" in window) {
-          const utter = new SpeechSynthesisUtterance(reply);
-          window.speechSynthesis.speak(utter);
+        // Speak the response
+        if ('speechSynthesis' in window) {
+          try {
+            const utterance = new SpeechSynthesisUtterance(reply);
+            // Set voice properties
+            utterance.rate = 1.0; // Speed (0.1 to 10)
+            utterance.pitch = 1.0; // Pitch (0 to 2)
+            utterance.volume = 1.0; // Volume (0 to 1)
+            
+            // Try to find a female voice (if available)
+            const voices = window.speechSynthesis.getVoices();
+            const femaleVoice = voices.find(voice => 
+              voice.name.toLowerCase().includes('female') || 
+              voice.lang.includes('en')
+            );
+            
+            if (femaleVoice) {
+              utterance.voice = femaleVoice;
+            }
+            
+            // Speak the text
+            window.speechSynthesis.speak(utterance);
+          } catch (error) {
+            console.error('Error with speech synthesis:', error);
+          }
         }
       }, 1000);
     } catch (err) {
