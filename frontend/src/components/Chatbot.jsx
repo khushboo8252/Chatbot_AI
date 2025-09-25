@@ -16,7 +16,7 @@ const ChatBot = () => {
   const recognitionRef = useRef(null);
 
   // Initialize Gemini client
-  const genAI = new GoogleGenerativeAI("AIzaSyCIM_F_-elathy9wM6xZZzE0B3jFqaUVCQ");
+  const genAI = new GoogleGenerativeAI("AIzaSyC2OMwNsMC3A6PEiWLHE1A3yR9gk_qB9rc");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   // Auto-scroll to bottom of messages
